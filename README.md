@@ -1,4 +1,4 @@
-# flutter-recipe-app
+# flutter-game
 
 Access this app via: [https://flutter-game.thong.cam](https://flutter-game.thong.cam "link")
 
