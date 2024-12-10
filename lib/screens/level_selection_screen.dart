@@ -23,54 +23,58 @@ class LevelSelectionScreen extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Level Selection',
-                style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 20),
-              Row(
+            padding: const EdgeInsets.all(16.0),
+            child: SingleChildScrollView(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.screen_rotation),
-                  SizedBox(width: 10),
-                  Text(
-                    'If you wish to play the game in landscape mode, rotate your phone before starting.',
-                    style: TextStyle(fontSize: 16),
+                  const Text(
+                    'Level Selection',
+                    style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 20),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.screen_rotation),
+                      SizedBox(width: 10),
+                      Flexible(
+                        child: Text(
+                          'If you wish to play the game in landscape mode, turn your phone before starting.',
+                          textAlign: TextAlign.start,
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 40),
+                  Wrap(
+                    spacing: 8.0,
+                    runSpacing: 8.0,
+                    children: [
+                      _buildLevelCard(
+                        levelNumber: 1,
+                        isCompleted: levelController.isLevelCompleted(1),
+                        score: levelController
+                            .getLevelScore(1), // Replace with actual score
+                      ),
+                      _buildLevelCard(
+                        levelNumber: 2,
+                        isCompleted: levelController.isLevelCompleted(2),
+                        score: levelController
+                            .getLevelScore(2), // Replace with actual score
+                      ),
+                      _buildLevelCard(
+                        levelNumber: 3,
+                        isCompleted: levelController.isLevelCompleted(3),
+                        score: levelController
+                            .getLevelScore(3), // Replace with actual score
+                      ),
+                    ],
                   ),
                 ],
               ),
-              const SizedBox(height: 40),
-              Wrap(
-                spacing: 8.0,
-                runSpacing: 8.0,
-                children: [
-                  _buildLevelCard(
-                    levelNumber: 1,
-                    isCompleted: levelController.isLevelCompleted(1),
-                    score: levelController
-                        .getLevelScore(1), // Replace with actual score
-                  ),
-                  _buildLevelCard(
-                    levelNumber: 2,
-                    isCompleted: levelController.isLevelCompleted(2),
-                    score: levelController
-                        .getLevelScore(2), // Replace with actual score
-                  ),
-                  _buildLevelCard(
-                    levelNumber: 3,
-                    isCompleted: levelController.isLevelCompleted(3),
-                    score: levelController
-                        .getLevelScore(3), // Replace with actual score
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
+            )),
       ),
     );
   }
